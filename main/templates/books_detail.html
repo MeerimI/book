@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            display: flex;
+        }
+
+        .books {
+
+            text-align: center;
+        }
+
+        .ittem {
+            padding: 30px;
+            background: #fff;
+            width: 15%;
+            height: 390px;
+            margin: 60px auto;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+            position: relative;
+            text-align: center;
+            background-color: #F9f9f9;
+        }
+
+        .inputs {
+            margin-top: 80px;
+        }
+
+        input {
+            width: 350px;
+            display: block;
+            margin: 15px;
+            color: rgb(231, 231, 231);
+            background-color: rgb(245, 245, 245);
+            text-shadow: none;
+            -webkit-box-shadow: transparent;
+            box-shadow: transparent;
+            border-color: rgb(221, 221, 221);
+            border-style: solid;
+            padding: 10px 15px;
+        }
+
+        .create_button {
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 1.00);
+            background-color: rgba(244, 156, 20, 1);
+            -webkit-box-shadow: transparent;
+            box-shadow: transparent;
+            border-color: rgba(244, 156, 20, 1);
+            border-style: solid;
+            padding: 10px 15px;
+        }
+
+        .action_buttons img{
+            margin: 10px;
+            width: 25px;
+            height: 25px;
+        }
+
+        .action_buttons a{
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="books">Книги</h2>
+    <div class="item">
+
+        <!-- {% for book in book_list %} -->
+        <div class="ittem">
+
+            <h3>Title - {{book.title}}</h3>
+            <h3>Subtitle - {{book.subtitle}}</h3>
+            <h3>Description - {{book.description}}</h3>
+            <h3>Price - {{book.price}}</h3>
+            <h3>Genre - {{book.genre}}</h3>
+            <h3>Author - {{book.author}}</h3>
+            <h3>Year - {{book.year}}</h3>
+
+            <div class="action_buttons">
+                {% if book.is_favorites %}
+                <a href="{% url 'unmark-book' book.id %}"><img src="{% static '/icons/mark.png' %}" alt="marked"></a>
+                {% else %}
+
+                <a href="{% url 'mark-book' book.id %}"><img src="{% static '/icons/unmarked.png' %}"
+                        alt="unmarked"></a>
+                {% endif %}
+
+                <a href="{% url 'delete-book'  book.id %}"> <img src="{% static '/icons/icons8-remove-64.png' %}"
+                        alt="delete"></a>
+                <a href="{% url 'books-detail' book.id %}">Подробнее</a>
+            </div>
+        </div>
+
+
+
+        <!-- {% endfor %} -->
+    </div>
+</body>
+
+</html>
