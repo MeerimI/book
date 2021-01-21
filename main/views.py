@@ -43,6 +43,6 @@ def delete_book(request, id):
 
 
 def BooksDetail(request, id):
-    book_ = Book.objects.get(id=id)
+    book_list = Book.objects.all()
     # book_.save()
-    return render(request, "books_detail.html")
+    return render(request, "books_detail.html", {"book_list": book_list})

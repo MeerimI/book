@@ -9,8 +9,9 @@
     <style>
         .item {
             display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
         }
-
         .books {
 
             text-align: center;
@@ -31,9 +32,13 @@
 
         .inputs {
             margin-top: 80px;
+            flex-wrap: wrap;
+            flex-direction: row;
         }
 
         input {
+            flex-wrap: wrap;
+
             width: 350px;
             display: block;
             margin: 15px;
@@ -76,7 +81,7 @@
     <h2 class="books">Книги</h2>
     <div class="item">
 
-        <!-- {% for book in book_list %} -->
+        {% for book in book_list %}
         <div class="ittem">
 
             <h3>Title - {{book.title}}</h3>
@@ -104,7 +109,7 @@
 
 
 
-        <!-- {% endfor %} -->
+        {% endfor %}
     </div>
 </body>
 
